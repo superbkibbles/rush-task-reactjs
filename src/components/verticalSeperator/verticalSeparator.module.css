@@ -1,0 +1,21 @@
+.line {
+    height: 70%;
+    width: 1px;
+    background: var(--color-grey);
+    align-self: center;
+}
+
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px){
+    /*Big smartphones [426px -> 600px]*/
+    .line {
+        height: 1px;
+        width: 70%;
+        order: -1;
+    }
+}
+@media only screen and (max-width: 425px){
+    /*Small smartphones [325px -> 425px]*/
+}

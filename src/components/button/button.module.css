@@ -1,0 +1,23 @@
+.btn {
+  padding: 0.5rem 2rem;
+  width: "100%";
+  /* background-color: var(--color-primary); */
+  background-image: linear-gradient(
+    to top right,
+    var(--color-primary),
+    #ff7b7b
+  );
+  color: var(--color-white);
+  font-size: 1.4rem;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: var(--shadow);
+}
+
+.btn:active {
+  box-shadow: var(--shadow-light);
+}

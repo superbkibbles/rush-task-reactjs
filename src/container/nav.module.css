@@ -1,0 +1,18 @@
+.container {
+    padding: 10px 50px;
+    background-image: linear-gradient(to right, var(--color-primary), #ff7b7b);
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__item { 
+    text-decoration: none;
+    padding-bottom: 5px;
+    color: var(--color-white);
+}
+

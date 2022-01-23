@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+import LoginPage from "./Pages/login/LoginPage";
+import { getToken, getUser } from "./auth/storage";
+import AppLoading from "./components/appLoading/AppLoading";
+import NotFoundPage from "./Pages/NotFoundPage";
+import { Layout } from "./container";
+
+const App = ({ user }) => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    getUser();
+    restoreToken();
+  }, [getUser]);
+
+  const restoreToken = () => {
+    getToken();
+    setIsReady(true);
+  };
+
+  if (!isReady) return <AppLoading />;
+
+  console.log(user);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route exact path="/login" element={<LoginPage />} />
+      <Route path="/*" element={<Layout />} />
+      {/* <Route exact path="/*" element={<NotFoundPage />} /> */}
+    </Routes>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { getUser })(App);
